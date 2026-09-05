@@ -1,0 +1,931 @@
+/* ===================================
+   Insights / Japan Fact Sheets (PPT-inspired)
+   =================================== */
+
+/* Sidebar Container */
+.sidebar-container {
+  position: sticky;
+  top: 200px;
+  align-self: start;
+  flex-shrink: 0;
+  width: 320px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  background-color: var(--bg-ivory);
+  padding: 16px 0;
+  margin-bottom: 40px;
+}
+
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--primary-text);
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '>';
+  margin-left: 8px;
+  color: rgba(91, 26, 6, 0.5);
+}
+
+.breadcrumb a {
+  color: var(--primary-text);
+  text-decoration: none;
+  transition: color 180ms ease-out;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-text);
+  text-decoration: underline;
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: var(--primary-text);
+  font-weight: 600;
+}
+
+.insights-hero {
+  position: relative;
+  background-color: #4e613f;
+  padding: 180px 0 30px;
+  overflow: hidden;
+}
+
+.insights-hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  z-index: 0;
+}
+
+.insights-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(78, 97, 63, 0.55);
+  z-index: 1;
+}
+
+.insights-hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--bg-ivory);
+}
+
+.insights-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 400;
+  margin: 20px 0 18px 0;
+  color: #f9e5c1;
+}
+
+.insights-title .mobile-br {
+  display: none; /* デスクトップでは改行を非表示 */
+}
+
+.insights-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  max-width: 80ch;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+  color: #f9e5c1;
+  opacity: 0.95;
+}
+
+/* Layout */
+.factsheets-section {
+  background-color: var(--bg-ivory);
+  padding: 20px 0 40px;
+}
+
+.factsheets-layout {
+  display: flex;
+  gap: 38px;
+  align-items: flex-start;
+}
+
+.filters {
+  background: rgba(249, 229, 193, 0.55);
+  border: none;
+  border-radius: 18px;
+  padding: 22px;
+  margin-top: 0;
+}
+
+.filter-block + .filter-block {
+  margin-top: 16px;
+}
+
+.filter-block label {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+}
+
+/* PC: Hide mobile filter labels */
+.mobile-filter-label {
+  display: none;
+}
+
+.search-wrap {
+  position: relative;
+}
+
+#searchInput {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(91, 26, 6, 0.25);
+  background: rgba(255, 246, 234, 0.65);
+  padding: 12px 14px;
+}
+
+.suggestion-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--bg-ivory);
+  border: 1px solid rgba(91, 26, 6, 0.22);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+}
+
+.suggestion-item {
+  padding: 10px 12px;
+  font-family: var(--font-body);
+  color: var(--primary-text);
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: rgba(110, 134, 161, 0.12);
+}
+
+.dropdown-toggle {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(91, 26, 6, 0.25);
+  background: rgba(255, 246, 234, 0.65);
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--primary-text);
+  cursor: pointer;
+}
+
+.dropdown-toggle .chev {
+  font-size: 1.1rem;
+  transition: transform 180ms ease-out;
+}
+
+.dropdown-toggle[aria-expanded="true"] .chev {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  margin-top: 10px;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(91, 26, 6, 0.18);
+  background: var(--bg-ivory);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  font-family: var(--font-body);
+  font-weight: 400 !important;
+  color: var(--primary-text);
+}
+
+.checkbox-item input {
+  width: 16px;
+  height: 16px;
+}
+
+#clearFilters {
+  margin-top: 18px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Results */
+.factsheets-results {
+  flex: 1;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.results-meta {
+  margin-top: 0;
+  margin-bottom: 18px;
+  padding-top: 0;
+}
+
+.results-count {
+  font-family: var(--font-body);
+  color: var(--primary-text);
+  margin: 0;
+}
+
+.factsheets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.factsheet-card {
+  background: var(--bg-ivory);
+  border: 1px solid rgba(91, 26, 6, 0.18);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out, background-color 0.2s ease;
+}
+
+.factsheet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.10);
+  background-color: #f4e4cf;
+}
+
+.factsheet-link {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.factsheet-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.92;
+}
+
+.factsheet-body {
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.factsheet-topic {
+  font-family: var(--font-accent);
+  font-weight: 700;
+  color: #6e86a1;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.factsheet-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin: 0;
+  color: var(--primary-text);
+  line-height: 1.25;
+}
+
+.factsheet-summary {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  margin: 0;
+  color: var(--primary-text);
+  opacity: 0.92;
+}
+
+.factsheet-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tag-pill {
+  background: rgba(91, 26, 6, 0.06);
+  border: 1px solid rgba(91, 26, 6, 0.14);
+  color: var(--primary-text);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 9999px;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  border: 1px solid rgba(91, 26, 6, 0.22);
+  background: var(--bg-ivory);
+  color: var(--primary-text);
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.page-number {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  border: 1px solid rgba(91, 26, 6, 0.22);
+  background: var(--bg-ivory);
+  color: var(--primary-text);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.page-number.active {
+  background: rgba(91, 26, 6, 0.12);
+  border-color: rgba(91, 26, 6, 0.35);
+  font-weight: 700;
+}
+
+/* Report intro */
+.report-intro {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  padding: 70px 0;
+}
+
+.report-intro-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(78, 97, 63, 0.62);
+}
+
+.report-intro-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  color: var(--bg-ivory);
+}
+
+.report-intro-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4.2rem;
+  font-weight: 400;
+  margin: 0 0 -16px 0;
+}
+
+.report-intro-text {
+  font-family: var(--font-body);
+  margin: 0;
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+.report-intro .btn {
+  border-radius: 8px;
+  background-color: #f9e5c1;
+  color: #5b1a06;
+}
+
+.report-intro .btn:hover {
+  background-color: #f5ddb0;
+}
+
+/* Report carousel */
+.report-carousel-section {
+  background-color: #708c63;
+  padding: 60px 0 80px;
+}
+
+.report-carousel-section .carousel-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.report-card {
+  background: var(--bg-ivory);
+  border-radius: 18px;
+  border: none;
+  padding: 26px;
+  max-width: 100%;
+  flex: 1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.report-card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.report-meta {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.report-number {
+  font-family: var(--font-accent);
+  font-weight: 700;
+  color: #6e86a1;
+}
+
+.report-date {
+  font-family: var(--font-body);
+  color: rgba(91, 26, 6, 0.78);
+}
+
+.report-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 0 12px 0;
+  color: var(--primary-text);
+}
+
+.report-summary {
+  font-family: var(--font-body);
+  margin: 0 0 14px 0;
+  line-height: 1.75;
+  color: var(--primary-text);
+}
+
+.report-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.btn-learn-more {
+  display: inline-block;
+  align-self: flex-end;
+  margin-top: auto;
+  padding: 8px 20px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5b1a06;
+  background-color: transparent;
+  border: 1px solid #5b1a06;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-learn-more:hover {
+  background-color: #5b1a06;
+  color: #f9e5c1;
+}
+
+/* CTA */
+.insights-cta {
+  background-color: var(--bg-light-beige);
+  padding: 80px 0;
+  text-align: left;
+}
+
+.cta-inner {
+  margin-left: 60px;
+  margin-right: auto;
+}
+
+.cta-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4.0rem;
+  font-weight: 400;
+  margin: 0 0 14px 0;
+  color: var(--primary-text);
+  text-align: left;
+}
+
+.cta-text {
+  font-family: var(--font-body);
+  margin: 0 0 26px 0;
+  max-width: 100ch;
+  line-height: 1.4;
+  color: var(--primary-text);
+  text-align: left;
+}
+
+.insights-cta .btn {
+  border-radius: 8px !important;
+}
+
+/* Remove hover effects from buttons on insights page */
+button.btn:hover,
+button.btn-secondary:hover,
+button#clearFilters:hover,
+.btn:hover {
+  box-shadow: none !important;
+  transform: translateY(0) !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .factsheets-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .sidebar-container {
+    width: 100%;
+    position: static;
+  }
+
+  .filters {
+    position: static;
+  }
+
+  .factsheets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .factsheet-link {
+    grid-template-columns: 140px 1fr;
+  }
+
+  .report-intro-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Desktop: Hide "see more" button (only for mobile) */
+.see-more-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Mobile: Hide breadcrumb navigation */
+  .breadcrumb {
+    display: none !important;
+  }
+  
+  /* Mobile: Responsive search box and filters */
+  .sidebar-container {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: calc(100% - 40px);
+  }
+  
+  /* Mobile: Remove background box from filters container */
+  .filters {
+    width: 100%;
+    padding: 0 !important; /* 背景ボックスを削除 */
+    margin: 0 0 32px 0;
+    box-sizing: border-box;
+    background: transparent !important; /* 背景を透明に */
+    border: none !important; /* 境界線を削除 */
+    border-radius: 0 !important;
+  }
+  
+  .filter-block {
+    width: 100%;
+    max-width: 100%; /* 幅の制限を解除 */
+    margin-bottom: 28px; /* セクション間の余白 */
+  }
+  
+  .filter-block:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* Mobile: Style filter labels (Topic areas, Tags) */
+  .mobile-filter-label {
+    display: block !important;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem; /* 少し大きく */
+    color: #4A2B1D; /* 濃い茶色 */
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+    text-align: center; /* ラベルも中央揃え */
+  }
+  
+  .search-wrap {
+    width: 100%;
+    margin: 0 0 16px 0; /* 下に余白を追加 */
+  }
+  
+  #searchInput {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px; /* 16px以上でズームを防ぐ */
+    box-sizing: border-box;
+    min-height: 48px; /* タップしやすいサイズ */
+    border-radius: 12px;
+    border: 1px solid rgba(91, 26, 6, 0.25);
+    background: rgba(255, 246, 234, 0.8);
+  }
+  
+  #searchInput::placeholder {
+    font-size: 16px; /* プレースホルダーも16px以上 */
+  }
+  
+  /* Mobile: Search label styling */
+  .filter-block label[for="searchInput"] {
+    display: block !important;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #4A2B1D;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+  }
+  
+  /* Mobile: Hide dropdown toggle buttons */
+  .dropdown-toggle {
+    display: none !important;
+  }
+  
+  /* Mobile: Show dropdown menus as tag chips (background removed) */
+  .dropdown-menu {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 10px; /* タグ間の余白 */
+    justify-content: center; /* 中央揃え */
+    margin-top: 0;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important; /* 背景削除 */
+    width: 100%; /* 幅を広げる */
+    max-width: 100%; /* 最大幅制限を解除 */
+  }
+  
+  .dropdown-menu[hidden] {
+    display: flex !important;
+  }
+  
+  /* Mobile: Transform checkbox items into tag chips (redesigned) */
+  .checkbox-item {
+    display: inline-flex !important; /* inline-flexで横並び */
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto; /* 横に伸びず、縮まず、必要最小限の幅 */
+    padding: 8px 16px; /* 上下8px、左右16px */
+    border: 1px solid #5b1a06; /* しっかりした枠線、色を#5b1a06に変更 */
+    border-radius: 25px; /* 楕円形 */
+    background-color: transparent; /* 未選択時：透明 */
+    color: #4A2B1D; /* 未選択時：茶色文字 */
+    font-size: 0.85rem; /* さらに小さく（シュッとした印象） */
+    font-weight: 500;
+    text-align: center; /* 文字を中央配置 */
+    line-height: 1.3; /* 行間を適度に設定 */
+    cursor: pointer;
+    transition: all 0.25s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    height: auto; /* 高さを自動調整 */
+    min-height: 34px; /* 最小高さのみ指定 */
+    width: auto; /* 文字の長さに応じた幅 */
+    white-space: nowrap; /* 改行しない（1行表示） */
+    box-sizing: border-box; /* パディングを含めたサイズ計算 */
+  }
+  
+  /* Mobile: Topic Area - 1行に2つ並べる */
+  #topicAreaMenu .checkbox-item {
+    flex: 0 0 calc(50% - 5px); /* 1行に2つ（gap 10pxを考慮） */
+    max-width: calc(50% - 5px);
+    font-size: 0.8rem; /* 文字サイズを縮小（0.85rem → 0.8rem） */
+    letter-spacing: -0.3px; /* 文字間隔を狭く */
+    padding: 8px 12px; /* 左右のパディングを少し縮小（16px → 12px） */
+  }
+  
+  /* Mobile: Tags - 1行に3つ並べる */
+  #tagsMenu .checkbox-item {
+    flex: 0 0 calc(33.333% - 7px); /* 1行に3つ（gap 10pxを考慮） */
+    max-width: calc(33.333% - 7px); /* 最大幅を設定 */
+    min-width: calc(33.333% - 7px); /* 最小幅も同じに設定 */
+    font-size: 0.68rem; /* 文字サイズをさらに縮小（0.72rem → 0.68rem、約10.9px） */
+    letter-spacing: -0.5px; /* 文字間隔をさらに狭く */
+    padding: 8px 6px; /* 左右のパディングをさらに縮小 */
+  }
+  
+  /* Hide checkbox inputs on mobile */
+  .checkbox-item input[type="checkbox"] {
+    display: none;
+  }
+  
+  /* Mobile: Hover effect for tag chips */
+  .checkbox-item:hover {
+    background-color: rgba(91, 26, 6, 0.08); /* #5b1a06ベースの薄い背景 */
+    border-color: #5b1a06; /* ホバー時も#5b1a06 */
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(91, 26, 6, 0.15); /* #5b1a06ベースの影 */
+  }
+  
+  /* Mobile: Active/selected state for tag chips */
+  .checkbox-item input[type="checkbox"]:checked + span,
+  .checkbox-item.active,
+  .checkbox-item:has(input[type="checkbox"]:checked) {
+    background-color: #5b1a06 !important; /* 選択時：#5b1a06背景 */
+    color: #FFFFFF !important; /* 選択時：白文字 */
+    border-color: #5b1a06 !important; /* 選択時：#5b1a06枠線 */
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(91, 26, 6, 0.25); /* #5b1a06ベースの影 */
+  }
+  
+  /* Mobile: Hide tags beyond 2nd row initially */
+  #topicAreaMenu:not(.expanded) .checkbox-item:nth-child(n+5),
+  #tagsMenu:not(.expanded) .checkbox-item:nth-child(n+7) {
+    display: none !important;
+  }
+  
+  /* Mobile: See more button - text only, no box */
+  .see-more-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0; /* パディング削除 */
+    margin-top: 16px;
+    background: transparent;
+    border: none; /* 枠線削除 */
+    border-radius: 0; /* 角丸削除 */
+    color: #4A2B1D;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .see-more-btn:hover {
+    color: #3a2218; /* ホバー時は色を濃く */
+    text-decoration: underline; /* 下線追加 */
+  }
+  
+  .see-more-btn .arrow {
+    margin-left: 6px;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .see-more-btn.expanded .arrow {
+    transform: rotate(180deg);
+  }
+  
+  /* Mobile: Clear filters button */
+  .btn-secondary {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    min-height: 48px; /* タップしやすいサイズ */
+    margin-top: 32px; /* 上に余白を追加 */
+    border-radius: 12px;
+  }
+  
+  /* Mobile: Page title - 2 lines (Japan Research / Fact Sheets) */
+  .insights-title {
+    font-size: 3.2rem; /* 2.5rem → 3.2rem に拡大 */
+    line-height: 1.1; /* 行間を縮める */
+    margin-bottom: 24px !important; /* タイトルと説明文の間のスペースを広げる */
+  }
+
+  .insights-title .mobile-br {
+    display: inline; /* モバイルで改行を表示 */
+  }
+
+  .insights-subtitle {
+    margin-top: 24px !important; /* 説明文の上部余白を追加 */
+  }
+
+  /* Mobile: English Report Summaries - tighter line-height */
+  .report-intro-title {
+    font-size: 2.8rem;
+    line-height: 1.0; /* 行間を縮める */
+  }
+
+  /* Mobile: CTA section - left align */
+  .insights-cta {
+    text-align: left !important; /* 左揃え */
+  }
+
+  .cta-inner {
+    margin-left: 20px; /* 左側の余白を適度に */
+    margin-right: 20px; /* 右側にも余白を追加 */
+  }
+
+  /* Mobile: Tighter line-height for CTA title */
+  .cta-title {
+    line-height: 0.95;
+    text-align: left !important; /* 左揃え */
+  }
+
+  /* Mobile: Smaller font size and more spacing above CTA text */
+  .cta-text {
+    font-size: 0.95rem;
+    margin-top: 24px;
+    text-align: left !important; /* 左揃え */
+  }
+
+  .insights-cta .btn {
+    margin-left: 0; /* ボタンを左揃え */
+  }
+
+  /* Mobile: Report cards - display 2 cards vertically */
+  .report-carousel-section .carousel-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .report-card {
+    max-width: 100%;
+    width: 100%;
+    min-height: auto;
+    aspect-ratio: auto;
+  }
+
+  .report-title {
+    font-size: 1.3rem; /* タイトルを少し小さく */
+    margin-bottom: 10px;
+  }
+
+  .report-summary {
+    font-size: 0.9rem; /* 本文を少し小さく */
+    line-height: 1.6;
+    margin-bottom: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* 4行まで表示 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .report-tags {
+    margin-bottom: 12px;
+  }
+
+  .btn-learn-more {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .factsheet-link {
+    grid-template-columns: 1fr;
+  }
+
+  .factsheet-thumb {
+    height: 200px;
+  }
+}

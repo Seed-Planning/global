@@ -1,0 +1,317 @@
+/* ===================================
+   Rare Disease page (PPT-inspired)
+   =================================== */
+
+.rare-hero {
+  background-color: var(--bg-ivory);
+  padding: calc(var(--spacing-xl) + 60px) 0 var(--spacing-lg);
+  text-align: left;
+}
+
+.rare-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: clamp(4rem, 8vw, 6.5rem);
+  margin: 0 0 18px 0;
+  color: #4e613f;
+  letter-spacing: -0.08em;
+  line-height: 0.85;
+}
+
+.rare-title em {
+  font-style: italic;
+}
+
+.rare-title .initiative-text {
+  letter-spacing: -0.04em;
+}
+
+.rare-subtitle {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  letter-spacing: -0.04em;
+  color: var(--primary-text);
+  max-width: 88ch;
+  margin: 0;
+}
+
+/* Blocks */
+.rare-block {
+  padding: 70px 0;
+  background-color: rgba(110, 134, 161, 0.5);
+}
+
+.rare-block--alt {
+  background-color: var(--bg-light-beige);
+}
+
+.rare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.rare-image img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+  filter: grayscale(100%);
+  opacity: 0.92;
+  border: 1px solid rgba(91, 26, 6, 0.12);
+}
+
+.rare-heading {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 3.5rem;
+  margin: 0 0 14px 0;
+  color: var(--primary-text);
+}
+
+
+
+.rare-copy p {
+  font-family: var(--font-body);
+  line-height: 1.5;
+  color: var(--primary-text);
+  margin: 0 0 14px 0;
+}
+
+.rare-bullets {
+  margin: 28px 0 22px 0;
+  padding-left: 20px;
+  font-family: var(--font-body);
+  color: var(--primary-text);
+  line-height: 1.6;
+}
+
+.rare-block--alt .rare-heading {
+  text-align: left;
+}
+
+.rare-block--alt .rare-copy p {
+  text-align: left;
+  line-height: 1.5;
+}
+
+.rare-bullets li + li {
+  margin-top: 10px;
+}
+
+.rare-btn {
+  margin-top: 8px;
+  border-radius: 8px !important;
+}
+
+/* CTA */
+.rare-cta {
+  background-color: #b5bf84;
+  padding: 80px 0;
+  text-align: left;
+}
+
+.rare-cta .cta-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 4.0rem;
+  margin: 0 0 14px 0;
+  color: var(--primary-text);
+  letter-spacing: -0.02em;
+}
+
+.rare-cta .cta-text {
+  font-family: var(--font-body);
+  margin: 0 0 26px 0;
+  max-width: 75ch;
+  line-height: 1.4;
+  color: var(--primary-text);
+}
+
+.rare-cta .btn {
+  border-radius: 8px !important;
+}
+
+@media (max-width: 1024px) {
+  .rare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rare-image img {
+    height: 300px;
+  }
+}
+
+/* Microsites Section */
+.microsites-section {
+  background-color: rgba(110, 134, 161, 0.32);
+  padding: 0;
+  text-align: center;
+}
+
+.microsites-trigger {
+  position: relative;
+  background-color: #fff6ea;
+  border: none;
+  cursor: pointer;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  width: 48px;
+  height: 48px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: translateY(-24px);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.microsites-trigger:hover {
+  background-color: #f5ecd7;
+}
+
+.microsites-trigger[aria-expanded="true"] {
+  transform: translateY(-24px) rotate(180deg);
+}
+
+.microsites-trigger-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) translateY(-2px) !important;
+  font-size: 1.5rem;
+  color: #5b1a06;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  background: none !important;
+}
+
+.microsites-content {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  padding: 0 20px;
+}
+
+.microsites-content:not([hidden]) {
+  max-height: 500px;
+  padding: 20px 20px 80px;
+}
+
+.microsites-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #5b1a06;
+  margin: 0 0 40px 0;
+}
+
+.microsites-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.microsites-buttons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.microsite-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background-color: transparent;
+  color: #5b1a06;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-decoration: none;
+  border: 1px solid #5b1a06;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-width: 240px;
+}
+
+.microsite-btn .external-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.microsite-btn:hover {
+  background-color: #5b1a06;
+  color: #ffffff;
+}
+
+.microsite-btn:hover .external-icon {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 768px) {
+  .microsites-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .microsite-btn {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  /* Mobile: Tighter line-height for CTA title */
+  .rare-cta .cta-title {
+    line-height: 0.95;
+  }
+
+  /* Mobile: Smaller font size and more spacing above CTA text */
+  .rare-cta .cta-text {
+    font-size: 0.95rem;
+    margin-top: 24px;
+  }
+
+  /* Mobile: Hide Participant-first approach section image */
+  .rare-block--alt .rare-image {
+    display: none;
+  }
+  
+  /* Mobile: Style for rare-contact-text */
+  .rare-contact-text {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: var(--primary-text);
+    text-align: left;
+  }
+  /* Mobile: Microsites section - ボタンが境界線上に配置されるよう設定 */
+  .microsites-section {
+    padding-top: 0 !important; /* paddingを削除してボタンが境界線上に */
+    overflow: visible !important; /* ボタンがはみ出して表示されるように */
+  }
+
+  /* Mobile: Microsites section内のcontainer - overflow解除、ボタン位置調整 */
+  .microsites-section .container {
+    overflow: visible !important;
+    padding-top: 0 !important; /* paddingを削除 */
+  }
+
+  /* Mobile: Microsites trigger button - さらに上に配置 */
+  .microsites-trigger {
+    position: relative !important;
+    transform: translateY(-36px) !important; /* 36px上に移動（ボタンの3/4が上のセクションに） */
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    display: block !important;
+  }
+}

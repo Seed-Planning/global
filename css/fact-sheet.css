@@ -1,0 +1,362 @@
+/* ===================================
+   Fact Sheet detail page (PPT-inspired)
+   =================================== */
+
+/* Position hero below header */
+#main {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.factsheet-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+  margin-top: 0;
+}
+
+.factsheet-hero-text {
+  background-color: rgba(110, 134, 161, 0.5);
+  color: #5b1a06;
+  display: flex;
+  align-items: center;
+}
+
+.factsheet-hero-inner {
+  padding: clamp(34px, 4.5vw, 60px);
+  max-width: 640px;
+}
+
+.hero-topic {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 20px 0 12px 0;
+  color: #fff6ea;
+}
+
+.hero-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.0rem, 3.5vw, 2.9rem);
+  line-height: 1.1;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.08em;
+}
+
+.hero-subtitle {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+  margin: 0 0 18px 0;
+  color: #5b1a06;
+  max-width: 70ch;
+}
+
+.hero-tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 0 0 26px 0;
+}
+
+.hero-tag {
+  background: rgba(255, 246, 234, 0.14);
+  border: 1px solid rgba(255, 246, 234, 0.25);
+  color: #fff6ea;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: 9999px;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 246, 234, 0.55);
+  color: #fff6ea;
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  background: #6e86a1;
+  transition: transform 180ms ease-out, background-color 180ms ease-out;
+}
+
+.btn-download:hover {
+  transform: translateY(-1px);
+  background: rgba(110, 134, 161, 0.85);
+}
+
+.btn-download--solid {
+  background: #6e86a1;
+  border-color: rgba(110, 134, 161, 0.5);
+  color: #fff6ea;
+}
+
+.btn-download--solid:hover {
+  background: rgba(110, 134, 161, 0.85);
+}
+
+.factsheet-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  filter: grayscale(100%);
+  opacity: 0.92;
+}
+
+/* Content */
+.factsheet-content {
+  background-color: var(--bg-ivory);
+  padding: 40px 0 100px 0;
+}
+
+.factsheet-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.content-heading {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 2.1rem;
+  color: var(--primary-text);
+  margin: 0 0 28px 0;
+}
+
+.bullet-list {
+  margin: 0;
+  padding-left: 20px;
+  font-family: var(--font-body);
+  color: var(--primary-text);
+  line-height: 1.8;
+}
+
+.bullet-list li + li {
+  margin-top: 10px;
+}
+
+.download-box {
+  margin-top: 26px;
+  text-align: right;
+  display: none;
+}
+
+/* Related */
+.related-section {
+  background-color: #708c63;
+  padding: 70px 0;
+  text-align: left;
+}
+
+.related-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  font-size: 2.8rem;
+  color: var(--bg-ivory);
+  margin: 0 0 28px 0;
+  text-align: left;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: left;
+}
+
+.related-card {
+  background: var(--bg-ivory);
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease-out, box-shadow 180ms ease-out;
+}
+
+.related-card:hover {
+  transform: translateY(-1px);
+}
+
+.related-thumb img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  opacity: 0.92;
+}
+
+.related-body {
+  padding: 16px 16px 18px;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+
+.related-topic {
+  font-family: var(--font-accent);
+  font-weight: 700;
+  color: #6e86a1;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.related-title-text {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  color: var(--primary-text);
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.related-subtitle {
+  font-family: var(--font-body);
+  margin: 0;
+  color: var(--primary-text);
+  line-height: 1.65;
+  font-size: 0.95rem;
+  opacity: 0.92;
+}
+
+/* CTA */
+.factsheet-cta {
+  background-color: var(--bg-light-beige);
+  padding: 80px 0;
+  text-align: left;
+}
+
+.factsheet-cta .cta-inner {
+  margin-left: 60px;
+  margin-right: auto;
+}
+
+.cta-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin: 0 0 14px 0;
+  color: var(--primary-text);
+}
+
+.cta-text {
+  font-family: var(--font-body);
+  margin: 0 0 26px 0;
+  max-width: 100ch;
+  line-height: 1.75;
+  color: var(--primary-text);
+  text-align: left;
+}
+
+.factsheet-cta .btn {
+  border-radius: 8px;
+}
+
+@media (max-width: 1024px) {
+  .factsheet-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .factsheet-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile: 横幅制限とオーバーフロー防止 */
+  .factsheet-hero,
+  .factsheet-columns,
+  .related-grid,
+  .cta-section {
+    max-width: 100vw;
+    width: 100%;
+    overflow-x: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Mobile: カードを縦並びに */
+  .related-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Mobile: Hero section - image on top, blue-grey background full width */
+  .factsheet-hero {
+    display: flex;
+    flex-direction: column-reverse; /* 画像を上に */
+  }
+
+  .factsheet-hero-text {
+    background-color: rgba(110, 134, 161, 0.5);
+    width: 100vw; /* 画面いっぱいに */
+    margin-left: calc(-50vw + 50%); /* 左右を画面端まで広げる */
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .factsheet-hero-inner {
+    max-width: 100%;
+    padding: 34px 0; /* 左右のパディングを削除（親で設定済み） */
+  }
+
+  .factsheet-hero-image {
+    width: 100vw; /* 画面いっぱいに */
+    margin-left: calc(-50vw + 50%); /* 左右を画面端まで広げる */
+    margin-bottom: 0;
+  }
+
+  .factsheet-hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block; /* 画像下の隙間を削除 */
+  }
+
+  /* Mobile: CTA section - left align */
+  .factsheet-cta {
+    text-align: left !important;
+  }
+
+  .factsheet-cta .cta-inner {
+    margin-left: 20px; /* 左側の余白を適度に */
+    margin-right: 20px; /* 右側にも余白を追加 */
+  }
+
+  /* Mobile: Tighter line-height for CTA title */
+  .cta-title {
+    line-height: 0.95;
+    max-width: 100%;
+    word-wrap: break-word;
+    text-align: left !important; /* 左揃え */
+  }
+
+  /* Mobile: Smaller font size and more spacing above CTA text */
+  .cta-text {
+    font-size: 0.95rem;
+    margin-top: 24px;
+    max-width: 100%;
+    word-wrap: break-word;
+    text-align: left !important; /* 左揃え */
+  }
+
+  .factsheet-cta .btn {
+    margin-left: 0; /* ボタンを左揃え */
+  }
+
+  /* Mobile: "You may also like..." smaller font size */
+  .related-title {
+    font-size: 1.8rem; /* 2.8rem から 1.8rem に縮小 */
+  }
+}

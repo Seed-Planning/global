@@ -1,0 +1,97 @@
+    <!-- HERO -->
+    <section class="insights-hero" style="background-image: url('assets/seed_discussion.png');">
+      <div class="insights-hero-overlay" aria-hidden="true"></div>
+      <div class="container insights-hero-inner">
+        <h1 class="insights-title">Japan Research Fact Sheets</h1>
+        <p class="insights-subtitle">
+          Practical briefs for global teams — covering Japan-specific recruitment realities, healthcare system context, and market access nuances.
+        </p>
+      </div>
+    </section>
+
+    <!-- FACT SHEETS LIST -->
+    <section class="factsheets-section">
+      <div class="container factsheets-layout">
+        <aside class="filters" aria-label="Fact sheet filters">
+          <div class="filter-block">
+            <label for="searchInput">Search</label>
+            <div class="search-wrap">
+              <input type="text" id="searchInput" placeholder="Search titles, topics, tags..." autocomplete="off">
+              <div id="suggestionList" class="suggestion-list" hidden></div>
+            </div>
+          </div>
+
+          <div class="filter-block">
+            <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="topicAreaMenu" data-dropdown="topicAreaMenu">
+              Topic Area <span class="chev" aria-hidden="true">⌄</span>
+            </button>
+            <div id="topicAreaMenu" class="dropdown-menu" hidden></div>
+          </div>
+
+          <div class="filter-block">
+            <button class="dropdown-toggle" type="button" aria-expanded="false" aria-controls="tagsMenu" data-dropdown="tagsMenu">
+              Tags <span class="chev" aria-hidden="true">⌄</span>
+            </button>
+            <div id="tagsMenu" class="dropdown-menu" hidden></div>
+          </div>
+
+          <button id="clearFilters" class="btn btn-secondary btn-square">Clear filters</button>
+        </aside>
+
+        <section class="factsheets-results" aria-label="Fact sheet results">
+          <div class="results-meta">
+            <p id="resultsCount" class="results-count">Loading…</p>
+          </div>
+
+          <div id="factSheetsGrid" class="factsheets-grid" aria-live="polite"></div>
+
+          <div class="pagination" aria-label="Pagination">
+            <button id="prevPage" class="page-btn" type="button" aria-label="Previous page">←</button>
+            <div id="pageNumbers" class="page-numbers" aria-label="Page numbers"></div>
+            <button id="nextPage" class="page-btn" type="button" aria-label="Next page">→</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- REPORT SUMMARIES INTRO -->
+    <section class="report-intro" style="background-image: url('assets/seed_office.png');">
+      <div class="report-intro-overlay" aria-hidden="true"></div>
+      <div class="container report-intro-inner">
+        <div>
+          <h2 class="report-intro-title">English Report Summaries</h2>
+          <p class="report-intro-text">
+            Need more than a snapshot? We can share executive-style summaries and discuss full report availability.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="request-report.html">Request a full report</a>
+      </div>
+    </section>
+
+    <!-- REPORT SUMMARIES CAROUSEL -->
+    <section class="report-carousel-section">
+      <div class="container">
+        <div class="carousel report-carousel" aria-label="Report summary carousel">
+          <div class="carousel-container" id="reportCarouselContainer">
+            <!-- Slides inserted by JS -->
+          </div>
+
+          <div class="carousel-controls">
+            <button class="carousel-btn prev" aria-label="Previous report">&#10094;</button>
+            <button class="carousel-btn next" aria-label="Next report">&#10095;</button>
+          </div>
+
+          <div class="carousel-dots" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="insights-cta">
+      <div class="container cta-inner">
+        <h2 class="cta-title">Navigating Japan’s market?</h2>
+        <p class="cta-text">Tell us your therapy area, audience, and timeline — we’ll suggest the right research approach.</p>
+        <a href="request-report.html" class="btn btn-primary">Request a specific topic</a>
+      </div>
+    </section>
+  
