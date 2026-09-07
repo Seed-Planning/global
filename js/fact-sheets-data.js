@@ -62,7 +62,7 @@ window.FACT_SHEETS = [
       "Which access hurdles matter most pre- and post-launch?",
       "Where might our US assumptions mislead Japan strategy?"
     ],
-    related: ["pricing-process", "oncology-dynamics", "prescribing-behaviors"]
+    related: ["pricing-process", "oncology-dynamics", "china-nrdl"]
   },
   {
     id: "prescribing-behaviors",
@@ -122,7 +122,7 @@ window.FACT_SHEETS = [
       "How might re-pricing affect physician behavior and hospital adoption over time?",
       "What access assumptions should be tested locally before finalizing plans?"
     ],
-    related: ["japan-vs-us-environment", "japan-market-brief"]
+    related: ["japan-vs-us-environment", "china-nrdl"]
   },
   {
     id: "patient-recruitment",
@@ -203,6 +203,27 @@ window.FACT_SHEETS = [
       "Which institutions should we prioritize to reflect real-world practice?"
     ],
     related: ["prescribing-behaviors", "japan-vs-us-environment"]
+  },
+  {
+    id: "china-nrdl",
+    title: "China’s National Reimbursement Drug System",
+    subtitle: "Overview, drug listings, and pricing for 2026",
+    topicArea: "Market access",
+    tags: ["China", "Reimbursement", "Price list"],
+    thumbnail: "assets/china-nrdl-hero.jpg",
+    pdf: "pdf/Chinas_National_Reimbursement_Drug_System.pdf",
+    keyPoints: [
+      "How the 2025 National Reimbursement Drug List (NRDL, effective January 2026) is structured — price-negotiated, general-listing, and price-bidding products, plus the National Essential Medicines List.",
+      "Full ATC-classified listings covering 1,857 chemical drugs and 1,396 TCM preparations, with reimbursement prices for 2,349 volume-based procurement products and 82 price-negotiated products.",
+      "The first-ever “Commercial Health Insurance Innovative Drug List,” a new private-insurance channel for innovative drugs sitting outside the core NRDL.",
+      "What 25 years of listing growth (now more than double the original count) signals about China’s pace of formulary expansion and access for overseas-made products."
+    ],
+    suggestedQuestions: [
+      "Are our products already listed on the 2025 NRDL, the negotiated list, or the new Commercial Health Insurance Innovative Drug List?",
+      "How should we prepare for the next round of national price negotiations, and what reduction rates should we expect by therapeutic class?",
+      "Where do overseas-manufactured products stand relative to the roughly 30% share of NRDL-listed drugs from foreign companies?"
+    ],
+    related: ["japan-vs-us-environment", "pricing-process"]
   }
 ];
 
